@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Интерактивная галерея исторических артефактов">
-  <title>Галерея артефактов</title>
+  <meta name="description" content="Интерактивная галерея исторических артефактов с фильтрацией и таблицей">
+  <title>Галерея исторических артефактов</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -13,8 +13,8 @@
     <button id="theme-btn">🌙 Тёмная тема</button>
   </header>
 
-  <main>
-    <section class="add-section">
+  <main class="container">
+    <section class="panel">
       <h2>Добавить новый артефакт</h2>
       <div class="form-group">
         <input type="text" id="artifact-title" placeholder="Название">
@@ -25,7 +25,7 @@
       <div id="error-msg" class="error-banner hidden">Заполните все поля!</div>
     </section>
 
-    <section class="filter-section">
+    <section class="panel">
       <h2>Фильтры</h2>
       <input type="text" id="search-input" placeholder="Поиск по названию">
       <div class="tabs" id="category-tabs">
@@ -33,10 +33,9 @@
       </div>
     </section>
 
-    <!-- НОВАЯ ОБЯЗАТЕЛЬНАЯ ТАБЛИЦА -->
     <section class="table-section">
       <h2>Список артефактов</h2>
-      <table id="artifacts-table">
+      <table>
         <thead>
           <tr>
             <th>№</th>
@@ -53,7 +52,7 @@
       </table>
     </section>
 
-    <section class="gallery-section">
+    <section class="panel">
       <h2>Галерея</h2>
       <p id="counter">Артефактов: 0</p>
       <div class="gallery-grid" id="gallery"></div>
@@ -68,7 +67,6 @@
     </ul>
   </footer>
 
-  <!-- Модальное окно -->
   <div id="modal" class="modal hidden">
     <div class="modal-content">
       <span class="close" id="close-modal">&times;</span>
