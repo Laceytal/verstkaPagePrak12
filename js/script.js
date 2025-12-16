@@ -45,6 +45,30 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // Обновление вкладок категорий (удаление пустых)
+  function updateCategoryTabs() {
+    // Получаем уникальные категории из текущих артефактов
+    const activeCategories = new Set(artifacts.map(a => a.category.toLowerCase()));
+    
+    // Удаляем вкладки категорий, которых больше нет
+    const tabButtons = categoryTabsContainer.querySelectorAll('.tab-btn:not([data-category="all"])');
+    tabButtons.forEach(btn => {
+      if (!activeCategories.has(btn.dataset.category)) {
+        btn.remove();
+        categories.delete(btn.dataset.category);
+      }
+    });
+    
+    // Если удалили активную вкладку, переключаемся на "Все"
+    const activeTab = categoryTabsContainer.querySelector('.tab-btn.active');
+    if (!activeTab || (activeTab.dataset.category !== 'all' && !activeCategories.has(activeTab.dataset.category))) {
+      const allTab = categoryTabsContainer.querySelector('[data-category="all"]');
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      allTab.classList.add('active');
+      filterCards('all');
+    }
+  }
+
   // Фильтрация карточек
   function filterCards(filterValue) {
     const cards = document.querySelectorAll('.card');
@@ -98,6 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updateGallery();
         updateTable();
         updateCounter();
+        updateCategoryTabs();
       });
     });
   }
@@ -147,6 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updateGallery();
         updateTable();
         updateCounter();
+        updateCategoryTabs();
       });
       
       gallery.appendChild(card);
