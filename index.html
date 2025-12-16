@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Интерактивная галерея исторических артефактов">
+  <title>Галерея артефактов</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Галерея исторических артефактов</h1>
+    <button id="theme-btn">🌙 Тёмная тема</button>
+  </header>
+
+  <main>
+    <section class="add-section">
+      <h2>Добавить новый артефакт</h2>
+      <div class="form-group">
+        <input type="text" id="artifact-title" placeholder="Название">
+        <input type="text" id="artifact-category" placeholder="Категория">
+        <input type="url" id="artifact-image" placeholder="URL изображения">
+        <button id="add-btn">Добавить</button>
+      </div>
+      <div id="error-msg" class="error-banner hidden">Заполните все поля!</div>
+    </section>
+
+    <section class="filter-section">
+      <h2>Фильтры</h2>
+      <input type="text" id="search-input" placeholder="Поиск по названию">
+      <div class="tabs" id="category-tabs">
+        <button class="tab-btn active" data-category="all">Все</button>
+      </div>
+    </section>
+
+    <!-- НОВАЯ ОБЯЗАТЕЛЬНАЯ ТАБЛИЦА -->
+    <section class="table-section">
+      <h2>Список артефактов</h2>
+      <table id="artifacts-table">
+        <thead>
+          <tr>
+            <th>№</th>
+            <th>Название</th>
+            <th>Категория</th>
+            <th>Дата добавления</th>
+            <th>Статус</th>
+            <th>Действия</th>
+          </tr>
+        </thead>
+        <tbody id="table-body">
+          <!-- Заполняется через JavaScript -->
+        </tbody>
+      </table>
+    </section>
+
+    <section class="gallery-section">
+      <h2>Галерея</h2>
+      <p id="counter">Артефактов: 0</p>
+      <div class="gallery-grid" id="gallery"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Галерея артефактов. Практическая работа №12</p>
+    <ul>
+      <li><a href="#" id="about-link">О проекте</a></li>
+      <li><a href="#" id="contact-link">Контакты</a></li>
+    </ul>
+  </footer>
+
+  <!-- Модальное окно -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close" id="close-modal">&times;</span>
+      <img id="modal-img" alt="Артефакт в полном размере">
+      <h2 id="modal-title">Название артефакта</h2>
+      <p id="modal-category">Категория</p>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
